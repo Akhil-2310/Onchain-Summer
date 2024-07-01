@@ -1,0 +1,33 @@
+<template name="navbar">
+  <div class="navbar-container">
+    <div class="bg-dark navbar-dark" data-sticky="top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="{{pathFor 'home'}}">
+            <img alt="Image" src="https://noun-api.com/beta/pfp?name=Airdroppify" width="25px" />
+            <img alt="Image" src="/images/logo-dark.png" width="100px" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="icon-menu h4"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            {{#if isWalletConnected}}
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a href="{{pathFor 'host'}}">Host Airdrop</a>
+              </li>
+            </ul>
+            {{/if}}
+
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                {{> connect}}
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</template>

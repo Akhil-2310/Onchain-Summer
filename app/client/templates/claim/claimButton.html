@@ -1,0 +1,23 @@
+<template name="claimButton">
+    {{#if existingClaim}}
+    <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+        <span>
+            <i class="icon-bell mr-2"></i>Airdrop claimed!
+        </span>
+    </div>
+    {{else if isIdVerified}}
+    <div class="alert alert-primary d-flex justify-content-between align-items-center" role="alert">
+        <span>
+            <i class="icon-bell mr-2"></i>You are eligible for an airdrop
+        </span>
+        <button class="btn btn-primary" id="claimAirdrop">Claim airdrop</button>
+    </div>
+    {{else}}
+    <div class="alert alert-secondary d-flex justify-content-between align-items-center" role="alert">
+        <span>
+            <i class="icon-bell mr-2"></i>You must verify your ID before you can claim
+        </span>
+        <button class="btn btn-info" id="verifyId">Verify ID</button>
+    </div>
+    {{/if}}
+</template>

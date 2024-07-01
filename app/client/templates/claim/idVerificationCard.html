@@ -1,0 +1,17 @@
+<template name="idVerificationCard">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+                <span class="h6">World ID Status</span>
+            </div>
+        </div>
+        <div class="card-body">
+            {{#if isIdVerified}}
+            <span class="badge badge-success mr-3">Verified</span>
+            {{else}}
+            <span class="badge badge-danger mr-3">Unverified</span>
+            <a href="#" id="verificationLink">Verify now ›</a>
+            {{/if}}
+        </div>
+    </div>
+</template>

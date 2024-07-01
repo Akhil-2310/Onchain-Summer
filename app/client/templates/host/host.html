@@ -1,0 +1,59 @@
+<template name="host">
+    <section>
+        <div class="container">
+            <div class="col col-12">
+                <div id="first" class="tab-pane step-content" style="display: block;">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-12 col-md-7">
+                            <!-- <h6 class="title-decorative">Host an airdrop</h6> -->
+                            <h3 class="h1">Host your airdrop</h3>
+                            <span class="lead">Let's begin by sharing some airdrop details.</span>
+                        </div>
+                        <!--end of col-->
+                        <div class="col-12 col-md-5">
+                            <img alt="Image" src="https://noun-api.com/beta/pfp?name={{getRandomNumber}}" class="w-100">
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                    <form id="createAirdrop">
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input class="form-control form-control-lg" type="text" id="name"
+                                    placeholder="Airdrop Name" required>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input class="form-control form-control-lg" type="text" id="description"
+                                    placeholder="Short Description" required>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input class="form-control form-control-lg" type="text" id="amount" placeholder="Amount"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <a href="{{getUnlimitUrl}}" target="_blank"
+                                    class="btn btn-outline-primary btn-lg" id="deposit">
+                                    <i class="icon-ticket"></i>
+                                    Pay with Unlimit Crypto
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input class="form-control form-control-lg" type="text" id="contractAddress"
+                                    placeholder="Contract Address" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-success sw-btn-next mt-4 submitBtn" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

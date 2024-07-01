@@ -1,0 +1,26 @@
+<template name="footer">
+    <footer class="footer-short">
+      <div class="container">
+        <hr>
+        <nav class="row justify-content-between align-items-center">
+          <div class="col-auto">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{{pathFor 'home'}}">
+                  <img alt="Image" src="/images/logo-white.png" width="100px" />
+                  <img alt="Image" src="https://noun-api.com/beta/pfp?name={{getRandomNumber}}" width="50px" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!--end of col-->
+        </nav>
+        <!--end of row-->
+        <div class="row">
+          <div class="col">
+            <small>Airdroppify</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </template>

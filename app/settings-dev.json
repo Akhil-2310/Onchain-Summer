@@ -1,0 +1,10 @@
+{
+    "app": "dev",
+    "public": {
+        "WALLETCONNECT_PROJECT_ID": "e5357cb753e692476d1c36ff8220d74f",
+        "WORLDID_PROJECT_ID": "app_staging_1eac87e9ceaef8fd6467f3d4b83eea8f",
+        "WORLDID_APP_URL": "https://airdroppify.vercel.app",
+        "UNLIMIT_MERCHANT_ID": "fa44bbc8-4d91-4d26-b2a4-c082fbfa5052"
+    },
+    "SERVER_KEY": "4c4dc9b4edbb8c4430e782db0ba161a38a1a705d9a246ac6c16d937bd73d35fd"
+}

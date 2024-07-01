@@ -1,0 +1,10 @@
+<template name="connect">
+    {{#if isWalletConnected}}
+    <a href="#" class="btn btn-secondary" id="disconnectButton">
+        Disconnect {{getWalletAddress}}
+    </a>
+    <img src="https://noun-api.com/beta/pfp?name={{getWalletAddress}}" width="45px" class="ml-1"/>
+    {{else}}
+    <a href="#" class="btn btn-primary" id="connectButton">Connect Wallet</a>
+    {{/if}}
+</template>

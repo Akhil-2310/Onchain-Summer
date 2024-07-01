@@ -1,0 +1,1 @@
+DEPLOY_HOSTNAME=ap-southeast-2.galaxy.meteor.com meteor deploy airdroppify.com --settings settings-prd.json

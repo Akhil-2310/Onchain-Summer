@@ -1,0 +1,84 @@
+<template name="home">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <div class="mb-3">
+                                <h1 class="h2 mb-2">Find out whether you're eligible!</h1>
+                                <span>A list of current running airdrops</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+    <section class="flush-with-above">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover align-items-center table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#if hasAirdrops}}
+                            {{#each liveAirdrops}}
+                            <tr class="bg-white">
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <img alt="Image" src="https://noun-api.com/beta/pfp?name={{contractAddress}}" class="avatar rounded avatar-sm">
+                                        <div class="media-body">
+                                            <span class="h6 mb-0">{{name}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>{{amount}}</td>
+                                <td>{{#if hasAlreadyClaimed contractAddress}}Claimed{{else}}Open{{/if}}</td>
+                                <td>
+                                    <a href="#">
+                                        <a href="/claim/{{contractAddress}}" class="viewAirdrop">View airdrop ›</a>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr class="bg-white">
+                                <th scope="row" class="w-25">
+                                  <a class="media align-items-center" href="#">
+                                    <div class="media-body">
+                                      <span class="h6 mb-0">No live airdrops</span>
+                                    </div>
+                                  </a>
+                                </th>
+                                <td class="w-50">
+                                  
+                                </td>
+                                <td></td>
+                                <td>
+
+                                </td>
+                              </tr>
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+</template>

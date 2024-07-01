@@ -1,0 +1,171 @@
+<template name="claim">
+    <section class="bg-white space-sm">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <div class="media align-items-center">
+                        <img alt="Image" src="https://noun-api.com/beta/pfp?name={{getCurrentAirdrop.contractAddress}}"
+                            class="avatar avatar-lg avatar-square rounded">
+                        <div class="media-body">
+                            <h1 class="mb-0">{{getCurrentAirdrop.name}}</h1>
+                            <h2 class="lead mb-2">{{getCurrentAirdrop.description}}</h2>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-success mr-3">Airdrop in progress</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end of col-->
+                {{#if isOwner}}
+                <div class="col-auto">
+                    <a href="#" class="btn btn-outline-danger" id="deleteListing"><i class="icon-cross mr-1"></i>
+                        Delete</a>
+                </div>
+                {{/if}}
+                <div class="col-auto">
+                    <a href="https://sepolia.basescan.org/address/{{getCurrentAirdrop.contractAddress}}" target="_blank"
+                        class="btn btn-outline-secondary"><i class="icon-download mr-1"></i> Contract Address</a>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+    <section class="bg-white space-sm flush-with-above">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="progress">
+                        {{#if existingClaim}}
+                        <div class="progress-bar bg-primary opacity-50" role="progressbar" style="width: 75%"
+                            aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="30"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        {{else if isIdVerified}}
+                        <div class="progress-bar bg-primary opacity-50" role="progressbar" style="width: 50%"
+                            aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="30"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        {{else if isWalletConnected}}
+                        <div class="progress-bar bg-primary opacity-50" role="progressbar" style="width: 25%"
+                            aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="30"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        {{else}}
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="30"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        {{/if}}
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row text-center">
+                {{#if isWalletConnected}}
+                <div class="col opacity-50">
+                    <span>Connect</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-check mr-1"></i>Done</small>
+                </div>
+                {{else}}
+                <div class="col">
+                    <span>Connect</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-calendar mr-1"></i>Not Done</small>
+                </div>
+                {{/if}}
+                <!--end of col-->
+                {{#if isIdVerified}}
+                <div class="col opacity-50">
+                    <span>Verify</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-check mr-1"></i>Done</small>
+                </div>
+                {{else}}
+                <div class="col">
+                    <span>Verify</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-calendar mr-1"></i>Not Done</small>
+                </div>
+                {{/if}}
+                <!--end of col-->
+
+                {{#if existingClaim}}
+                <div class="col opacity-50">
+                    <span>Claim</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-check mr-1"></i>Done</small>
+                </div>
+                <!--end of col-->
+                <div class="col">
+                    <span>Completed</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-check mr-1"></i>Done</small>
+                </div>
+                {{else}}
+                <div class="col">
+                    <span>Claim</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-calendar mr-1"></i>Not Done</small>
+                </div>
+                <!--end of col-->
+                <div class="col">
+                    <span>Completed</span>
+                    <br>
+                    <small class="text-muted"><i class="icon-calendar mr-1"></i>Not Done</small>
+                </div>
+                {{/if}}
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+    <section class="space-sm">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-4 mb-1">
+                    {{> idVerificationCard}}
+                    <!-- end card -->
+                </div>
+                <!--end of col-->
+                <div class="col-12 col-md-8">
+                    {{> claimButton}}
+
+                    <div class="card">
+                        <div class="card-header bg-secondary">
+                            Claim History
+                        </div>
+
+
+                        {{#if existingClaim}}
+                        <ul class="list-group list-group-flush list-group-comments">
+                            <li class="list-group-item bg-secondary d-flex">
+                                <div class="d-flex">
+                                    <i class="icon-check h1 text-success mr-3"></i>
+                                    <div>
+                                        <span>Claimed $1 USD {{getReadableDate existingClaim.claimedAt}}</span>
+                                        <small class="d-block text-muted">
+                                            <a href="https://ccip.chain.link/tx/{{existingClaim.transactionHash}}"
+                                                target="_blank">
+                                                {{existingClaim.transactionHash}}
+                                            </a>
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+</template>
